@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aboutview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/viewbackground" >
+ 
+    
+     <ImageButton
+        android:id="@+id/goBack2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/goback" />
+
+     <ScrollView
+         android:id="@+id/scrollView1"
+         android:layout_width="299dp"
+         android:layout_height="233dp" >
+
+         <TextView
+             android:id="@+id/textView1"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:text="法国思想家帕斯卡尔有一句名言：“人是一支有思想的芦苇。”" />
+     </ScrollView>
+
+</LinearLayout>

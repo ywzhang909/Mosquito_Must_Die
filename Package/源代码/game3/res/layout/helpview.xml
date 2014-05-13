@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/helpview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/viewbackground" >
+    
+
+     <ImageButton
+        android:id="@+id/goBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/goback" />
+
+   <ScrollView
+       android:id="@+id/scrollView1"
+       android:layout_width="299dp"
+       android:layout_height="233dp" >
+
+       <TextView
+           android:id="@+id/textView1"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:text="法国思想家帕斯卡尔有一句名言：“人是一支有思想的芦苇。”
+                                                                       他的意思是说，人的生命像芦苇一样脆弱，宇宙间任何东西都能致人于死地，
+                                                                       可是，即使如此，人依然比宇宙间任何东西高贵得多，因为人有一颗能思想的灵魂。
+                                                                       我们当然不能否认肉身生活的必要，但是，人的高贵却在于他有灵魂生活。作为肉身的人，
+                                                                       人并无高低贵贱之分。唯有作为灵魂的人，由于内心世界的巨大差异，人才分出了高贵和平庸，
+                                                                       乃至高贵和卑鄙。两千多年前，罗马军队攻进了希腊的一座城市，他们发现一个老人正蹲在沙地上专心研究一个图形。他就是古代最著名的物理学家阿基米德。他很快便死在了军队的剑下，当剑朝他劈来时，他只说了一句话：“不要踩坏我的圆！”在他看来，他画在地上的那个图形是比他的生命更加宝贵的。更早的时候，征服了欧亚大陆的亚历山大大帝视察希腊的另一座城市，遇到正躺在地上晒太阳的哲学家第欧根尼，便问他：“我能替你做些什么？”得到的回答是：“不要挡住我的阳光！”在他看来，面对他在阳光下的沉思，亚历山大大帝的赫赫战功显得无足轻重，这两则传为千古美谈的小故事表明了古希腊优秀人物对于灵魂生活的珍爱，他们爱思想胜于爱一切包括自己的生命，把灵魂生活看得比任何外在的事物包括显赫的权势更加高贵" />
+       
+    </ScrollView>
+  
+    
+   
+
+</LinearLayout>

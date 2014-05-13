@@ -1,0 +1,20 @@
+协调指令：
+category=0
+value=0   游戏房间准备就绪
+value=1   道具放置同步就绪        一方放置道具后，并不画在画布上，而是立即通知另一方（包括道具位置和道具种类）
+另一方接到通知后，发送给前一方，我准备好绘制这个道具，这个消息即value=1.
+
+动作指令：
+category=1
+value=1  驱蚊香，Locx和Locy为该道具位置坐标
+value=2  依次向下排列
+
+升级指令：
+category=2
+value=1  // frog
+2		 // ExpelPlant
+3		 // KillSpray
+4		 // ExpelIncense
+5		 // KillLamp
+6		 // SpiderWeb
+7		 // Swatted
