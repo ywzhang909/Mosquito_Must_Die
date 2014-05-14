@@ -8,7 +8,7 @@ import utility.ScreenScaleResult;
 
 /**
  * 
- * @author 山东大学android实验室
+ * @author 山东大学赵宝琦、张霖、吕华富、于洪洋
  *
  */
 public class Constant {

@@ -18,7 +18,7 @@ import android.util.Log;
 
 /**
  * 
- * @author 山东大学android实验室刘昭呈、张昊
+ * @author 山东大学赵宝琦、张霖、吕华富、于洪洋、张昊
  * 
  */
 public class Mosquito {

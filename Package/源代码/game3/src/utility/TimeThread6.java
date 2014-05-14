@@ -19,7 +19,7 @@ import com.userView.GameViewThree;
 import com.userView.GameViewTwo;
 /**
  * 
- * @author 山东大学android实验室刘昭呈
+ * @author 山东大学赵宝琦、张霖、吕华富、于洪洋
  *
  */
 public class TimeThread6 extends Thread {

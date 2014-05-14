@@ -15,7 +15,7 @@ import android.util.Log;
 import com.userView.GameViewOne;
 /**
  * 
- * @author 山东大学android实验室刘昭呈
+ * @author 山东大学赵宝琦、张霖、吕华富、于洪洋
  *
  */
 public class TimeThread extends Thread {
