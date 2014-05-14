@@ -515,18 +515,23 @@ public class Mosquito {
 		}
 
 		if (delay % 4 == 0) {
-			canvas.drawBitmap(move[0], Sx, Sy, paint);
+			canvas.drawBitmap(move[0], Sx * Constant.wRatio, Sy
+					* Constant.hRatio, paint);
 		}
 		if (delay % 4 == 1) {
-			canvas.drawBitmap(move[1], Sx, Sy, paint);
+			canvas.drawBitmap(move[1], Sx * Constant.wRatio, Sy
+					* Constant.hRatio, paint);
 		}
 		if (delay % 4 == 2) {
-			canvas.drawBitmap(move[2], Sx, Sy, paint);
+			canvas.drawBitmap(move[2], Sx * Constant.wRatio, Sy
+					* Constant.hRatio, paint);
 		}
 		if (delay % 4 == 3) {
-			canvas.drawBitmap(move[3], Sx, Sy, paint);
+			canvas.drawBitmap(move[3], Sx * Constant.wRatio, Sy
+					* Constant.hRatio, paint);
 		}
-		canvas.drawRect(Sx, Sy + 5, Sx + 5 * hp, Sy, paint);
+		canvas.drawRect(Sx * Constant.wRatio, Sy * Constant.hRatio + 5, Sx
+				* Constant.wRatio + 5 * hp, Sy * Constant.hRatio, paint);
 		delay++;
 	}
 

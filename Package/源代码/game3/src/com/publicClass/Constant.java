@@ -15,8 +15,7 @@ public class Constant {
 	//多人游戏名称
 	public static final String GAME_NAME="game3";
 	//屏幕参数
-	public stati
-	c int SCREEN_WIDTH;//屏幕的宽度
+	public static int SCREEN_WIDTH;//屏幕的宽度
 	public static int SCREEN_HEIGHT;//屏幕的高度
 	
 	public static ScreenScaleResult ssr;//屏幕缩放计算的结果

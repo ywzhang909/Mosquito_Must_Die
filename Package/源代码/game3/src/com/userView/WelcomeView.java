@@ -47,7 +47,7 @@ implements SurfaceHolder.Callback  //实现生命周期回调接口
 	int screenHeight=Constant.SCREEN_HEIGHT;//屏幕高度
 	
 	//动画源图片
-	Bitmap[] logos=new Bitmap[2];//logo图片数组
+	Bitmap[] logos=new Bitmap[1];//logo图片数组
 	Bitmap currentLogo;//当前logo图片引用
 	
 	//坐标参数相关
@@ -70,8 +70,8 @@ implements SurfaceHolder.Callback  //实现生命周期回调接口
 		paint.setAntiAlias(true);//打开抗锯齿
 		
 		//加载图片
-				logos[0]=BitmapFactory.decodeResource(activity.getResources(), R.drawable.welcome22); 
-				logos[1]=BitmapFactory.decodeResource(activity.getResources(), R.drawable.welcome44);		
+				//logos[0]=BitmapFactory.decodeResource(activity.getResources(), R.drawable.welcome22); 
+				logos[0]=BitmapFactory.decodeResource(activity.getResources(), R.drawable.welcome44);		
 				for(int i=0;i<logos.length;i++){
 					//将每一张图片进行适当的缩放
 					logos[i]=PicScaleHelper.FullScreenScale(logos[i], Constant.wRatio,Constant.hRatio);

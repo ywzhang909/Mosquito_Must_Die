@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import utility.PicScaleHelper;
+
 import com.publicClass.Constant;
 import com.publicClass.GameActivity;
 
@@ -77,6 +79,7 @@ public class MainMenuView extends SurfaceView implements View.OnTouchListener,
 		this.setOnTouchListener(this);
 		background = BitmapFactory.decodeResource(activity.getResources(),
 				R.drawable.mainmenuback);
+		background = PicScaleHelper.FullScreenScale(background, Constant.wRatio, Constant.hRatio);
 		arrow = BitmapFactory.decodeResource(activity.getResources(),
 				R.drawable.arrow);
 		arrow = rotate(arrow, 90);
