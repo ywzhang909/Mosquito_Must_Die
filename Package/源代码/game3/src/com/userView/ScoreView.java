@@ -1,9 +1,12 @@
 package com.userView;
 
+import utility.PicScaleHelper;
+
 import com.publicClass.Constant;
 import com.publicClass.GameActivity;
 import com.publicClass.R;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -25,8 +28,9 @@ public class ScoreView extends SurfaceView implements Callback {
 
 	float fFrontH;
 	float width = Constant.SCREEN_WIDTH, height = Constant.SCREEN_HEIGHT;
-    //积分榜前五位
+	// 积分榜前五位
 	int[] Top5;
+
 	public ScoreView(GameActivity activity) {
 		super(activity);
 		this.activity = activity;
@@ -44,7 +48,7 @@ public class ScoreView extends SurfaceView implements Callback {
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		Top5=activity.currentGrade();
+		Top5 = activity.currentGrade();
 		paint = new Paint();
 		paint.setAntiAlias(true);// 打开抗锯齿
 		paint.setTextSize(40);
@@ -55,8 +59,8 @@ public class ScoreView extends SurfaceView implements Callback {
 		repaint();
 	}
 
-	private void repaint() {
-		Canvas canvas=this.getHolder().lockCanvas();
+	@SuppressLint("WrongCall") private void repaint() {
+		Canvas canvas = this.getHolder().lockCanvas();
 		try {
 			synchronized (canvas) {
 				Log.e("start paint", "");
@@ -74,8 +78,11 @@ public class ScoreView extends SurfaceView implements Callback {
 	private void initBitmap() {
 		bgBitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.jifenbackground);
+		bgBitmap = PicScaleHelper.FullScreenScale(bgBitmap, Constant.wRatio,
+				Constant.hRatio);
 		back = BitmapFactory.decodeResource(getResources(), R.drawable.goback);
-		
+		back = PicScaleHelper.FullScreenScale(back, Constant.wRatio,
+				Constant.hRatio);
 		number = new Bitmap[] {
 				BitmapFactory
 						.decodeResource(getResources(), R.drawable.number1),
@@ -87,6 +94,10 @@ public class ScoreView extends SurfaceView implements Callback {
 						.decodeResource(getResources(), R.drawable.number4),
 				BitmapFactory
 						.decodeResource(getResources(), R.drawable.number5), };
+		for (Bitmap bm : number) {
+			bm = PicScaleHelper.FullScreenScale(bm, Constant.wRatio,
+					Constant.hRatio);
+		}
 	}
 
 	@Override
@@ -99,7 +110,7 @@ public class ScoreView extends SurfaceView implements Callback {
 		float downY = event.getY();
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			if (Constant.isPointInRect(downX, downY, 0,0, back.getWidth(),
+			if (Constant.isPointInRect(downX, downY, 0, 0, back.getWidth(),
 					back.getHeight()))
 				activity.sendMessage(Constant.GOTO_MAIN_MENU_VIEW);
 			break;
@@ -112,29 +123,30 @@ public class ScoreView extends SurfaceView implements Callback {
 		Log.e("number", "");
 		canvas.drawColor(Color.WHITE);
 		canvas.drawBitmap(bgBitmap, 0, 0, paint);
-		canvas.drawBitmap(back,0,0, paint);
-		
-//		canvas.drawBitmap(title, width / 2 - title.getWidth() / 2, 30, paint);
+		canvas.drawBitmap(back, 0, 0, paint);
+
+		// canvas.drawBitmap(title, width / 2 - title.getWidth() / 2, 30,
+		// paint);
 
 		int h = 75 + 100;
-		
-		int jianju=150;
-		int numW=number[0].getWidth();
-		Log.e("number", ""+h);
-		canvas.drawBitmap(number[0], 75, h-fFrontH+10,paint);
-		canvas.drawText(Top5[0]+"", jianju + numW, h, paint);
 
-		canvas.drawBitmap(number[1], 75, h+10 , paint);
-		canvas.drawText(Top5[1]+"", jianju + numW, h + fFrontH, paint);
+		int jianju = 150;
+		int numW = number[0].getWidth();
+		Log.e("number", "" + h);
+		canvas.drawBitmap(number[0], 75, h - fFrontH + 10, paint);
+		canvas.drawText(Top5[0] + "", jianju + numW, h, paint);
 
-		canvas.drawBitmap(number[2], 75, h + fFrontH+10, paint);
-		canvas.drawText(Top5[2]+"", jianju + numW, h + 2 * fFrontH, paint);
+		canvas.drawBitmap(number[1], 75, h + 10, paint);
+		canvas.drawText(Top5[1] + "", jianju + numW, h + fFrontH, paint);
 
-		canvas.drawBitmap(number[3], 75, h + 2 * fFrontH+10, paint);
-		canvas.drawText(Top5[3]+"", jianju + numW, h + 3 * fFrontH, paint);
+		canvas.drawBitmap(number[2], 75, h + fFrontH + 10, paint);
+		canvas.drawText(Top5[2] + "", jianju + numW, h + 2 * fFrontH, paint);
 
-		canvas.drawBitmap(number[4], 75, h + 3 * fFrontH+10, paint);
-		canvas.drawText(Top5[4]+"", jianju + numW, h + 4 * fFrontH, paint);
+		canvas.drawBitmap(number[3], 75, h + 2 * fFrontH + 10, paint);
+		canvas.drawText(Top5[3] + "", jianju + numW, h + 3 * fFrontH, paint);
+
+		canvas.drawBitmap(number[4], 75, h + 3 * fFrontH + 10, paint);
+		canvas.drawText(Top5[4] + "", jianju + numW, h + 4 * fFrontH, paint);
 	}
 
 }

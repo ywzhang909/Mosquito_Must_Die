@@ -1,5 +1,7 @@
 package com.userView;
 
+import utility.PicScaleHelper;
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -49,10 +51,10 @@ public class ChooseView extends SurfaceView implements SurfaceHolder.Callback {
 						3 * h / 2 - numberBitmaps[4].getHeight() / 2 },
 				{ 3 * w - numberBitmaps[5].getWidth() / 2,
 						3 * h / 2 - numberBitmaps[5].getHeight() / 2 },
-//				{ w - numberBitmaps[6].getWidth() / 2, 2 * h },
-//				{ 2 * w - numberBitmaps[7].getWidth() / 2, 2 * h },
-//				{ 3 * w - numberBitmaps[8].getWidth() / 2, 2 * h }, 
-				};
+		// { w - numberBitmaps[6].getWidth() / 2, 2 * h },
+		// { 2 * w - numberBitmaps[7].getWidth() / 2, 2 * h },
+		// { 3 * w - numberBitmaps[8].getWidth() / 2, 2 * h },
+		};
 	}
 
 	@Override
@@ -61,15 +63,16 @@ public class ChooseView extends SurfaceView implements SurfaceHolder.Callback {
 		// 绘制背景
 		canvas.drawBitmap(bgBitmap, 0, 0, paint);
 		canvas.drawBitmap(backbutton, 0, 0, paint);
-		ableChoose=activity.getAchievement();
-//		Log.e("achievement",activity.getAchievement()+"");
-		Log.e("ableChoose", ableChoose+"");
+		ableChoose = activity.getAchievement();
+		// Log.e("achievement",activity.getAchievement()+"");
+		Log.e("ableChoose", ableChoose + "");
 		for (int i = 0; i < ableChoose; i++) {
 			canvas.drawBitmap(numberBitmaps[i], loc[i][0], loc[i][1], paint);
 		}
 	}
 
 	// 重新绘制的方法
+	@SuppressLint("WrongCall")
 	public void repaint() {
 		Canvas canvas = this.getHolder().lockCanvas();
 		try {
@@ -151,16 +154,6 @@ public class ChooseView extends SurfaceView implements SurfaceHolder.Callback {
 					loc[5][1] + numberBitmaps[5].getHeight())
 					&& ableChoose >= 6)
 				activity.sendMessage(Constant.GOTO_6);
-//			if (Constant.isPointInRect(x, y, loc[6][0], loc[6][1], loc[6][0]
-//					+ numberBitmaps[6].getWidth(),
-//					loc[6][1] + numberBitmaps[6].getHeight())
-//					&& ableChoose >= 7)
-//				activity.sendMessage(Constant.GOTO_7);
-//			if (Constant.isPointInRect(x, y, loc[7][0], loc[7][1], loc[7][0]
-//					+ numberBitmaps[7].getWidth(),
-//					loc[7][1] + numberBitmaps[7].getHeight())
-//					&& ableChoose >= 8)
-//				activity.sendMessage(Constant.GOTO_8);
 
 		}
 		return true;
@@ -170,8 +163,11 @@ public class ChooseView extends SurfaceView implements SurfaceHolder.Callback {
 	public void initBitmap() {
 		bgBitmap = BitmapFactory.decodeResource(this.getResources(),
 				R.drawable.viewbackground);
-		backbutton = BitmapFactory.decodeResource(this.getResources(),
-				R.drawable.goback);
+		bgBitmap = PicScaleHelper.FullScreenScale(bgBitmap, Constant.wRatio,
+				Constant.hRatio);
+		backbutton = PicScaleHelper.FullScreenScale(BitmapFactory
+				.decodeResource(this.getResources(), R.drawable.goback),
+				Constant.wRatio, Constant.hRatio);
 		numberBitmaps = new Bitmap[] {
 				BitmapFactory.decodeResource(this.getResources(),
 						R.drawable.number1),
@@ -185,8 +181,12 @@ public class ChooseView extends SurfaceView implements SurfaceHolder.Callback {
 						R.drawable.number5),
 				BitmapFactory.decodeResource(this.getResources(),
 						R.drawable.number6),
-				
+
 		};
+		for (Bitmap bm : numberBitmaps) {
+			bm = PicScaleHelper.FullScreenScale(bm, Constant.wRatio,
+					Constant.hRatio);
+		}
 
 	}
 }

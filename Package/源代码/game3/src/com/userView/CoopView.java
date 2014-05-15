@@ -40,7 +40,7 @@ import com.publicClass.R;
 
 public class CoopView extends SurfaceView implements Callback {
 	String host;
-	public int choose=-1;
+	public int choose = -1;
 	public int choose1 = -1;
 	public int choose2 = -1;
 	public int capture = 1;
@@ -86,8 +86,8 @@ public class CoopView extends SurfaceView implements Callback {
 	public ArrayList<BluetoothDevice> PreDeviceList;
 	public ArrayList<BluetoothDevice> CurDeviceList;
 	public ManagerThread managerThread;
-//	public Collection<WifiP2pDevice> wifiDevice;
-//	public  WifiP2pDevice[] wifiDeviceList;
+	// public Collection<WifiP2pDevice> wifiDevice;
+	// public WifiP2pDevice[] wifiDeviceList;
 	// 处理通知的handler
 	public Handler mHandler = new Handler() {
 		@SuppressLint("ShowToast")
@@ -140,7 +140,8 @@ public class CoopView extends SurfaceView implements Callback {
 				Toast.makeText(activity, "搜索失败", Toast.LENGTH_LONG).show();
 				break;
 			case 8:
-				Toast.makeText(activity, "搜索成功，正在请求列表，请等待", Toast.LENGTH_LONG).show();
+				Toast.makeText(activity, "搜索成功，正在请求列表，请等待", Toast.LENGTH_LONG)
+						.show();
 				break;
 			case 99:
 				if (((Target) msg.obj).getValue().equals("0")) {
@@ -262,6 +263,7 @@ public class CoopView extends SurfaceView implements Callback {
 	}
 
 	// 重新绘制的方法
+	@SuppressLint("WrongCall")
 	public void repaint() {
 		Canvas canvas = this.getHolder().lockCanvas();
 		try {
@@ -349,6 +351,7 @@ public class CoopView extends SurfaceView implements Callback {
 		btnLoc[10] = new float[] { dividL,
 				height - dividH - getReady.getHeight() };
 	}
+
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
 
@@ -384,8 +387,8 @@ public class CoopView extends SurfaceView implements Callback {
 						&& !isDown) {
 					// wifi
 					isDown = true;
-//					activity.registerReceiver(activity.wfReceive,
-//							activity.mIntentFilter);
+					// activity.registerReceiver(activity.wfReceive,
+					// activity.mIntentFilter);
 					situation = 6;
 					repaint();
 					// Toast.makeText(activity, "功能尚未实现", 5);
@@ -573,7 +576,7 @@ public class CoopView extends SurfaceView implements Callback {
 						&& !isDown) {
 					Log.e("pressBtn", situation + " back");
 					situation = 2;
-					page=1;
+					page = 1;
 					repaint();
 				}
 			}
@@ -641,7 +644,7 @@ public class CoopView extends SurfaceView implements Callback {
 					isDown = true;
 					ready1 = ready2 = false;
 					situation = 2;
-					capture=1;
+					capture = 1;
 					repaint();
 				}
 			}
@@ -734,7 +737,7 @@ public class CoopView extends SurfaceView implements Callback {
 					flag = false;
 					mBluetoothAdapter.cancelDiscovery();
 					situation = 2;
-					page=1;
+					page = 1;
 					// 解除广播接收器的注册
 					activity.unregisterReceiver(activity.receiver);
 					repaint();
@@ -784,18 +787,19 @@ public class CoopView extends SurfaceView implements Callback {
 					// join
 					Log.e("pressBtn", situation + " join");
 					isDown = true;
-//					activity.mManager.discoverPeers(activity.mChannel, new WifiP2pManager.ActionListener() {
-//					    @Override
-//					    public void onSuccess() {
-//					    	activity.coopView.mHandler.sendEmptyMessage(8);
-//					    	situation=8;
-//					    	repaint();
-//					    }
-//					    @Override
-//					    public void onFailure(int reasonCode) {
-//					     activity.coopView.mHandler.sendEmptyMessage(7);
-//					    }
-//					});
+					// activity.mManager.discoverPeers(activity.mChannel, new
+					// WifiP2pManager.ActionListener() {
+					// @Override
+					// public void onSuccess() {
+					// activity.coopView.mHandler.sendEmptyMessage(8);
+					// situation=8;
+					// repaint();
+					// }
+					// @Override
+					// public void onFailure(int reasonCode) {
+					// activity.coopView.mHandler.sendEmptyMessage(7);
+					// }
+					// });
 				}
 				if (Constant.isPointInRect(downX, downY, btnLoc[2][0],
 						btnLoc[2][1], back.getWidth(), back.getHeight())
@@ -815,11 +819,12 @@ public class CoopView extends SurfaceView implements Callback {
 					// 列表监听0
 					isDown = true;
 					Log.i("Prelist", "" + 0);
-//					if (wifiDeviceList.length != 0
-//							&& 0 + numberOfPage * (page - 1) < wifiDeviceList.length) {
-//						choose = 0 + (page - 1) * numberOfPage;
-//
-//					}
+					// if (wifiDeviceList.length != 0
+					// && 0 + numberOfPage * (page - 1) < wifiDeviceList.length)
+					// {
+					// choose = 0 + (page - 1) * numberOfPage;
+					//
+					// }
 				}
 				if (Constant.isPointInRect(downX, downY, dividL, dividH + 1
 						* fFontHeight, width - 2 * dividL, fFontHeight)
@@ -827,44 +832,48 @@ public class CoopView extends SurfaceView implements Callback {
 					// 列表监听1
 					Log.i("Prelist", "" + 1);
 					isDown = true;
-//					if (wifiDeviceList.length != 0
-//							&& 1 + numberOfPage * (page - 1) < wifiDeviceList.length) {
-//						choose = 1 + (page - 1) * numberOfPage;
-//
-//					}
+					// if (wifiDeviceList.length != 0
+					// && 1 + numberOfPage * (page - 1) < wifiDeviceList.length)
+					// {
+					// choose = 1 + (page - 1) * numberOfPage;
+					//
+					// }
 				}
 				if (Constant.isPointInRect(downX, downY, dividL, dividH + 2
 						* fFontHeight, width - 2 * dividL, fFontHeight)
 						&& !isDown) {
 					// 列表监听2
 					isDown = true;
-//					if (wifiDeviceList.length != 0
-//							&& 2 + numberOfPage * (page - 1) <wifiDeviceList.length) {
-//						choose = 2 + (page - 1) * numberOfPage;
-//
-//					}
+					// if (wifiDeviceList.length != 0
+					// && 2 + numberOfPage * (page - 1) <wifiDeviceList.length)
+					// {
+					// choose = 2 + (page - 1) * numberOfPage;
+					//
+					// }
 				}
 				if (Constant.isPointInRect(downX, downY, dividL, dividH + 3
 						* fFontHeight, width - 2 * dividL, fFontHeight)
 						&& !isDown) {
 					// 列表监听3
 					isDown = true;
-//					if (wifiDeviceList.length != 0
-//							&& 3 + numberOfPage * (page - 1) < wifiDeviceList.length) {
-//						choose = 3 + (page - 1) * numberOfPage;
-//
-//					}
+					// if (wifiDeviceList.length != 0
+					// && 3 + numberOfPage * (page - 1) < wifiDeviceList.length)
+					// {
+					// choose = 3 + (page - 1) * numberOfPage;
+					//
+					// }
 				}
 				if (Constant.isPointInRect(downX, downY, dividL, dividH + 4
 						* fFontHeight, width - 2 * dividL, fFontHeight)
 						&& !isDown) {
 					// 列表监听4
 					isDown = true;
-//					if (wifiDeviceList.length != 0
-//							&& 4 + numberOfPage * (page - 1) < wifiDeviceList.length) {
-//						choose = 4 + (page - 1) * numberOfPage;
-//
-//					}
+					// if (wifiDeviceList.length != 0
+					// && 4 + numberOfPage * (page - 1) < wifiDeviceList.length)
+					// {
+					// choose = 4 + (page - 1) * numberOfPage;
+					//
+					// }
 				}
 				if (Constant.isPointInRect(downX, downY, btnLoc[9][0],
 						btnLoc[9][1], back.getWidth(), back.getHeight())
@@ -874,7 +883,7 @@ public class CoopView extends SurfaceView implements Callback {
 					isDown = true;
 
 					situation = 2;
-					page=1;
+					page = 1;
 					repaint();
 				}
 				// 向上翻页
@@ -1084,22 +1093,23 @@ public class CoopView extends SurfaceView implements Callback {
 				canvas.drawBitmap(next, btnLoc[5][0], btnLoc[5][1], paint);
 
 			// link
-//			if (wifiDeviceList.length != 0) {
-//				if (CurDeviceList.get(0) != null)
-//					for (int i = 0; i < numberOfPage
-//							&& (i + (page - 1) * numberOfPage) < wifiDeviceList.length; i++) {
-//						String name =wifiDeviceList[i + (page - 1) * numberOfPage]
-//								.toString();
-//						canvas.drawText(name, dividL, dividH + 6 * fFontHeight
-//								/ 5 * i, paint);
-//						canvas.drawLine(dividL, dividH + fFontHeight * i,
-//								width, dividH + fFontHeight * i, paint);
-//					}
-//			}
+			// if (wifiDeviceList.length != 0) {
+			// if (CurDeviceList.get(0) != null)
+			// for (int i = 0; i < numberOfPage
+			// && (i + (page - 1) * numberOfPage) < wifiDeviceList.length; i++)
+			// {
+			// String name =wifiDeviceList[i + (page - 1) * numberOfPage]
+			// .toString();
+			// canvas.drawText(name, dividL, dividH + 6 * fFontHeight
+			// / 5 * i, paint);
+			// canvas.drawLine(dividL, dividH + fFontHeight * i,
+			// width, dividH + fFontHeight * i, paint);
+			// }
+			// }
 			canvas.drawBitmap(back, btnLoc[9][0], btnLoc[9][1], paint);
 			break;
 		case 8:
-			
+
 			Log.i("situation", "" + 8);
 			if (capture > 1)// previous
 				canvas.drawBitmap(previous, btnLoc[6][0], btnLoc[6][1], paint);
@@ -1109,12 +1119,12 @@ public class CoopView extends SurfaceView implements Callback {
 			canvas.drawBitmap(captures[capture - 1], btnLoc[7][0],
 					btnLoc[7][1], paint);
 			float textHW = captures[0].getHeight() + btnLoc[7][1] + 40;
-//			if (!isHost) {
-//				canvas.drawText(wifiDeviceList[choose].toString(),
-//						dividL, textHW, paint);
-//			} else {
-//				canvas.drawText("Me", dividL, textHW, paint);
-//			}
+			// if (!isHost) {
+			// canvas.drawText(wifiDeviceList[choose].toString(),
+			// dividL, textHW, paint);
+			// } else {
+			// canvas.drawText("Me", dividL, textHW, paint);
+			// }
 			if (ready1)
 				canvas.drawBitmap(readyMark, width - dividL, textHW, paint);
 
@@ -1154,7 +1164,7 @@ public class CoopView extends SurfaceView implements Callback {
 			flag = true;
 		}
 
-		@Override
+		@SuppressLint("WrongCall")
 		public void run() {
 			super.run();
 			Canvas c;
@@ -1171,7 +1181,7 @@ public class CoopView extends SurfaceView implements Callback {
 					}
 				}
 				try {
-					
+
 					Thread.sleep(50);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
