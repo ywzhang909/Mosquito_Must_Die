@@ -5,6 +5,7 @@ import com.publicClass.Constant;
 import com.publicClass.GameActivity;
 import com.publicClass.R;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -41,7 +42,7 @@ public class AboutView extends SurfaceView implements SurfaceHolder.Callback{
 		canvas.drawBitmap(backbutton, 0, 0, paint);
 	}
 	//重新绘制的方法
-    public void repaint()
+    @SuppressLint("WrongCall") public void repaint()
 	{
 		Canvas canvas=this.getHolder().lockCanvas();
 		try

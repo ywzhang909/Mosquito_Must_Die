@@ -65,7 +65,7 @@ public class MainMenuView extends SurfaceView implements View.OnTouchListener,
 	// ËÙ¶È
 	int rotateSpeed = 4;
 	int moveSpeed = 10;
-	int zoomSpeed = 15;//px
+	int zoomSpeed = 40;//px
 
 	GameActivity activity;
 	// DrawThread thread = new DrawThread();
